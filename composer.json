@@ -1,0 +1,25 @@
+{
+    "name": "cyril-verloop/calc",
+    "description": "A calculator.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "CyrilVerloop\\Calc\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CyrilVerloop\\Calc\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.4"
+    },
+    "authors": [
+        {
+            "name": "Cyril VERLOOP",
+            "email": "cyril.verloop@webqard.fr"
+        }
+    ]
+}
