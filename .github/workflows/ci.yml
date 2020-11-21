@@ -31,7 +31,7 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: Install phive dependencies
-      run: wget -O phive https://phar.io/releases/phive.phar && chmod +x phive && phive install
+      run: wget -O phive https://phar.io/releases/phive.phar && chmod +x phive && ./phive install
 
     - name: Run PHPUnit test
       run: ./tools/phpunit -c ./build/phpunit.xml
