@@ -1,4 +1,4 @@
-name: PHP Composer
+name: build project
 
 on:
   push:
@@ -26,9 +26,15 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Install dependencies
+    - name: Install composer dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Install phive dependencies
+      run: phive install
+
+    - name: Run PHPUnit test
+      run: ./tools/phpunit -c ./build/phpunit.xml
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
