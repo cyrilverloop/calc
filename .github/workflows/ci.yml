@@ -32,8 +32,8 @@ jobs:
       id: phive-cache
       uses: actions/cache@v2
       with:
-        path: tools
-        key: ${{ runner.os }}-phive-${{ hashFiles('phive.phar') }}
+        path: phive.phar
+        key: ${{ runner.os }}-phive-${{ hashFiles('**/phive.phar') }}
 
     - name: Install phive
       if: steps.phive-cache.outputs.cache-hit != 'true'
