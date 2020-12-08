@@ -55,7 +55,7 @@ jobs:
       run: ./phive install --trust-gpg-keys 4AA394086372C20A phpunit
 
   test:
-
+    needs: install
     runs-on: ubuntu-latest
 
     steps:
