@@ -48,7 +48,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: tools
-        key: ${{ runner.os }}-phive-${{ hashFiles('**/phive.xml') }}
+        key: ${{ runner.os }}-phive-packages-${{ hashFiles('**/phive.xml') }}
 
     - name: Install phive dependencies
       if: steps.phive-tools-cache.outputs.cache-hit != 'true'
