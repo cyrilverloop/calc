@@ -1,4 +1,4 @@
-name: build project
+name: verify project
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ trunk ]
 
 jobs:
-  build:
+  install:
 
     runs-on: ubuntu-latest
 
@@ -22,22 +22,42 @@ jobs:
       uses: actions/cache@v2
       with:
         path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
 
     - name: Install composer dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Install phive dependencies
-      run: wget -O phive https://phar.io/releases/phive.phar && chmod +x phive && ./phive install --trust-gpg-keys 4AA394086372C20A phpunit
+    - name: Cache phive
+      id: phive-cache
+      uses: actions/cache@v2
+      with:
+        path: tools
+        key: ${{ runner.os }}-phive-${{ hashFiles('phive.phar') }}
 
+    - name: Install phive
+      if: steps.phive-cache.outputs.cache-hit != 'true'
+      run: wget -O phive https://phar.io/releases/phive.phar
+
+    - name: Gives phive execution right
+      if: steps.phive-cache.outputs.cache-hit != 'true'
+      run: chmod +x phive
+
+    - name: Cache phive packages
+      id: phive-tools-cache
+      uses: actions/cache@v2
+      with:
+        path: tools
+        key: ${{ runner.os }}-phive-${{ hashFiles('**/phive.xml') }}
+
+    - name: Install phive dependencies
+      if: steps.phive-tools-cache.outputs.cache-hit != 'true'
+      run: ./phive install --trust-gpg-keys 4AA394086372C20A phpunit
+
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Run PHPUnit test
       run: ./tools/phpunit -c ./build/phpunit.xml
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    # - name: Run test suite
-    #   run: composer run-script test
