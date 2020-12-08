@@ -60,4 +60,4 @@ jobs:
 
     steps:
     - name: Run PHPUnit test
-      run: ./tools/phpunit -c ./build/phpunit.xml
+      run: **/tools/phpunit -c ./build/phpunit.xml
