@@ -45,10 +45,19 @@ jobs:
       if: steps.phive-tools-cache.outputs.cache-hit != 'true'
       run: ./phive install --trust-gpg-keys 4AA394086372C20A phpunit
 
+    - uses: actions/upload-artifact@v2
+      with:
+        name: installed-project
+        path: .
+
   test:
     needs: install
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: installed-project
+
     - name: Run PHPUnit test
-      run: pwd; ls -l; ./tools/phpunit -c ./build/phpunit.xml
+      run: ./tools/phpunit -c ./build/phpunit.xml
