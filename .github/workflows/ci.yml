@@ -29,7 +29,7 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: Install phive
-      run: wget -O phive https://phar.io/releases/phive.phar; pwd; ls -l
+      run: pwd; ls -l; wget -O phive https://phar.io/releases/phive.phar
 
     - name: Gives phive execution right
       run: chmod +x phive
