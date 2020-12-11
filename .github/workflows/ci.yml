@@ -28,19 +28,10 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Cache phive
-      id: phive-cache
-      uses: actions/cache@v2
-      with:
-        path: phive.phar
-        key: ${{ runner.os }}-phive-${{ hashFiles('**/phive.phar') }}
-
     - name: Install phive
-      if: steps.phive-cache.outputs.cache-hit != 'true'
       run: wget -O phive https://phar.io/releases/phive.phar
 
     - name: Gives phive execution right
-      if: steps.phive-cache.outputs.cache-hit != 'true'
       run: chmod +x phive
 
     - name: Cache phive packages
