@@ -52,7 +52,7 @@ jobs:
 
     - name: Install phive dependencies
       if: steps.phive-tools-cache.outputs.cache-hit != 'true'
-      run: ./phive install --trust-gpg-keys 4AA394086372C20A phpunit
+      run: phive install --trust-gpg-keys 4AA394086372C20A phpunit
 
   test:
     needs: install
