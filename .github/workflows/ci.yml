@@ -59,5 +59,8 @@ jobs:
       with:
         name: installed-project
 
+    - name: Display structure of downloaded files
+      run: ls -R
+
     - name: Run PHPUnit test
       run: ./tools/phpunit -c ./build/phpunit.xml
