@@ -29,7 +29,7 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: Install phive
-      run: pwd; ls -l; wget -O phive https://phar.io/releases/phive.phar
+      run: wget -O phive https://phar.io/releases/phive.phar
 
     - name: Gives phive execution right
       run: chmod +x phive
@@ -43,7 +43,7 @@ jobs:
 
     - name: Install phive dependencies
       if: steps.phive-tools-cache.outputs.cache-hit != 'true'
-      run: phive install --trust-gpg-keys 4AA394086372C20A phpunit
+      run: ./phive install --trust-gpg-keys 4AA394086372C20A phpunit
 
   test:
     needs: install
