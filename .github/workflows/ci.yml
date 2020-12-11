@@ -32,18 +32,18 @@ jobs:
       run: wget -O phive https://phar.io/releases/phive.phar
 
     - name: Gives phive execution right
-      run: chmod u+x phive
+      run: chmod +x phive
 
     - name: Cache phive packages
       id: phive-tools-cache
       uses: actions/cache@v2
       with:
         path: tools
-        key: ${{ runner.os }}-phive-packages-${{ hashFiles('**/phive.xml') }}2
+        key: ${{ runner.os }}-phive-packages-${{ hashFiles('**/phive.xml') }}3
 
     - name: Install phive dependencies
       if: steps.phive-tools-cache.outputs.cache-hit != 'true'
-      run: ./phive install --trust-gpg-keys 4AA394086372C20A phpunit && chmod u+x ./tools/phpunit
+      run: ./phive install --trust-gpg-keys 4AA394086372C20A phpunit && chmod +x ./tools/phpunit
 
     - uses: actions/upload-artifact@v2
       with:
