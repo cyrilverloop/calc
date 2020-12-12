@@ -43,7 +43,7 @@ jobs:
 
     - name: Install phive dependencies
       if: steps.phive-tools-cache.outputs.cache-hit != 'true'
-      run: ./phive install --trust-gpg-keys 4AA394086372C20A phpunit && chmod +x ./tools/phpunit
+      run: ./phive install --trust-gpg-keys 4AA394086372C20A phpunit && chmod +x ./tools/phpunit && ls -l ./tools/
 
     - uses: actions/upload-artifact@v2
       with:
@@ -59,8 +59,8 @@ jobs:
       with:
         name: installed-project
 
-    - name: Display structure of downloaded files
-      run: ls -R
+    - name: Display tools rights
+      run:  ls -l ./tools/
 
     - name: Run PHPUnit test
       run: ./tools/phpunit -c ./build/phpunit.xml
