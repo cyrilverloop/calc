@@ -50,7 +50,7 @@ jobs:
       run: chmod -R +x ./tools/
 
     - name: 'Tar project'
-      run: tar -cvf project.tar .
+      run: tar -cf project.tar .
 
     - uses: actions/upload-artifact@v2
       with:
@@ -65,6 +65,9 @@ jobs:
     - uses: actions/download-artifact@v2
       with:
         name: installed-project
+
+    - name: Untar project.
+      run:  tar -xf project.tar
 
     - name: Display tools rights
       run:  ls -l ./tools/
