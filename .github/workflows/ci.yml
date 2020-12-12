@@ -50,7 +50,7 @@ jobs:
       run: chmod -R +x ./tools/
 
     - name: 'Tar project'
-    run: tar -cvf project.tar .
+      run: tar -cvf project.tar .
 
     - uses: actions/upload-artifact@v2
       with:
