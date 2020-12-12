@@ -34,21 +34,28 @@ jobs:
     - name: Gives phive execution right
       run: chmod +x phive
 
-    - name: Cache phive packages
-      id: phive-tools-cache
-      uses: actions/cache@v2
-      with:
-        path: tools
-        key: ${{ runner.os }}-phive-packages-${{ hashFiles('**/phive.xml') }}4
+#    - name: Cache phive packages
+#      id: phive-tools-cache
+#      uses: actions/cache@v2
+#      with:
+#        path: tools
+#        key: ${{ runner.os }}-phive-packages-${{ hashFiles('**/phive.xml') }}
 
     - name: Install phive dependencies
-      if: steps.phive-tools-cache.outputs.cache-hit != 'true'
-      run: ./phive install --trust-gpg-keys 4AA394086372C20A phpunit && chmod +x ./tools/phpunit && ls -l ./tools/
+#      if: steps.phive-tools-cache.outputs.cache-hit != 'true'
+      run: ./phive install --trust-gpg-keys 4AA394086372C20A phpunit
+
+    - name: Add tools execution right
+#      if: steps.phive-tools-cache.outputs.cache-hit != 'true'
+      run: chmod -R +x ./tools/
+
+    - name: 'Tar project'
+    run: tar -cvf project.tar .
 
     - uses: actions/upload-artifact@v2
       with:
         name: installed-project
-        path: ./
+        path: project.tar
 
   test:
     needs: install
