@@ -70,7 +70,7 @@ jobs:
       run:  tar -xf project.tar
 
     - name: Display tools rights
-      run:  ls -R; ls -l ./tools/
+      run:  ls -R; ls -l ./tools/; pwd
 
     - name: Run PHPUnit test
-      run: ./tools/phpunit -c ./build/phpunit.xml
+      run: ./tools/phpunit; ./tools/phpunit -c ./build/phpunit.xml; pwd
