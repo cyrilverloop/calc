@@ -57,6 +57,9 @@ jobs:
         name: installed-project
         path: project.tar
 
+    - name: Display tools rights
+      run:  ls -R; ls -l ./tools/; pwd
+
   test:
     needs: install
     runs-on: ubuntu-latest
