@@ -57,6 +57,9 @@ jobs:
         name: installed-project
         path: project.tar
 
+    - name: Run PHPUnit test
+      run: ./tools/phpunit -c ./build/phpunit.xml
+
   test:
     needs: install
     runs-on: ubuntu-latest
