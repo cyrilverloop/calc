@@ -57,9 +57,6 @@ jobs:
         name: installed-project
         path: project.tar
 
-    - name: Display tools rights
-      run:  ls -R; ls -l ./tools/; pwd
-
   test:
     needs: install
     runs-on: ubuntu-latest
@@ -76,4 +73,5 @@ jobs:
       run:  ls -R; ls -l ./tools/; pwd
 
     - name: Run PHPUnit test
-      run: /home/runner/work/calc/calc/tools/phpunit; /home/runner/work/calc/calc/tools/phpunit -c ./build/phpunit.xml; pwd
+#      run: /home/runner/work/calc/calc/tools/phpunit; /home/runner/work/calc/calc/tools/phpunit -c ./build/phpunit.xml; pwd
+      run: ./tools/phpunit -c ./build/phpunit.xml
