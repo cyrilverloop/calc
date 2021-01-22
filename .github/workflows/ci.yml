@@ -34,19 +34,19 @@ jobs:
     - name: Gives phive execution right
       run: chmod +x phive
 
-#    - name: Cache phive packages
-#      id: phive-tools-cache
-#      uses: actions/cache@v2
-#      with:
-#        path: tools
-#        key: ${{ runner.os }}-phive-packages-${{ hashFiles('**/phive.xml') }}
+    - name: Cache phive packages
+      id: phive-tools-cache
+      uses: actions/cache@v2
+      with:
+        path: tools
+        key: ${{ runner.os }}-phive-packages-${{ hashFiles('**/phive.xml') }}
 
     - name: Install phive dependencies
-#      if: steps.phive-tools-cache.outputs.cache-hit != 'true'
-      run: ./phive install --trust-gpg-keys 4AA394086372C20A phpunit
+      if: steps.phive-tools-cache.outputs.cache-hit != 'true'
+      run: ./phive install --trust-gpg-keys 4AA394086372C20A
 
     - name: Add tools execution right
-#      if: steps.phive-tools-cache.outputs.cache-hit != 'true'
+      if: steps.phive-tools-cache.outputs.cache-hit != 'true'
       run: chmod -R +x ./tools/
 
     - name: 'Tar project'
@@ -56,9 +56,6 @@ jobs:
       with:
         name: installed-project
         path: project.tar
-
-    - name: Run PHPUnit test
-      run: ./tools/phpunit -c ./build/phpunit.xml
 
   test:
     needs: install
@@ -72,9 +69,5 @@ jobs:
     - name: Untar project.
       run:  tar -xf project.tar
 
-    - name: Display tools rights
-      run:  ls -R; ls -l ./tools/; pwd
-
     - name: Run PHPUnit test
-#      run: /home/runner/work/calc/calc/tools/phpunit; /home/runner/work/calc/calc/tools/phpunit -c ./build/phpunit.xml; pwd
       run: ./tools/phpunit -c ./build/phpunit.xml
