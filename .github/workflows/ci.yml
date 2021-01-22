@@ -9,7 +9,7 @@ on:
 jobs:
   install:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v2
@@ -62,7 +62,7 @@ jobs:
 
   test:
     needs: install
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/download-artifact@v2
