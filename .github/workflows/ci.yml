@@ -22,32 +22,22 @@ jobs:
       uses: actions/cache@v2
       with:
         path: vendor
-        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        key: composer-lock-${{ hashFiles('**/composer.lock') }}
 
     - name: Install composer dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
-
-    - name: Install phive
-      run: wget -O phive https://phar.io/releases/phive.phar
-
-    - name: Gives phive execution right
-      run: chmod +x phive
 
     - name: Cache phive packages
       id: phive-tools-cache
       uses: actions/cache@v2
       with:
         path: tools
-        key: ${{ runner.os }}-phive-packages-${{ hashFiles('**/phive.xml') }}
+        key: phive-tools-${{ hashFiles('**/phive.xml') }}
 
-    - name: Install phive dependencies
+    - name: Install phive tools
       if: steps.phive-tools-cache.outputs.cache-hit != 'true'
-      run: ./phive install --trust-gpg-keys 4AA394086372C20A
-
-    - name: Add tools execution right
-      if: steps.phive-tools-cache.outputs.cache-hit != 'true'
-      run: chmod -R +x ./tools/
+      run: wget -O phive https://phar.io/releases/phive.phar && chmod +x phive && ./phive install --trust-gpg-keys 4AA394086372C20A && chmod -R +x ./tools/
 
     - name: 'Tar project'
       run: tar -cf project.tar .
