@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
  */
 class CalcTest extends TestCase
 {
-    // Attributes :
+    // Properties :
 
     /**
      * @var \CyrilVerloop\Calc\Calc the test subject.
@@ -23,7 +23,7 @@ class CalcTest extends TestCase
     protected Calc $calc;
 
 
-    // Méthodes :
+    // Methodes :
 
     /**
      * Initialises tests.
