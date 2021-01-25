@@ -37,7 +37,7 @@ jobs:
 
     - name: Install phive tools
       if: steps.phive-tools-cache.outputs.cache-hit != 'true'
-      run: wget -O phive https://phar.io/releases/phive.phar && chmod +x phive && ./phive install --trust-gpg-keys 4AA394086372C20A && chmod -R +x ./tools/
+      run: wget -O phive https://phar.io/releases/phive.phar && chmod +x phive && ./phive install --trust-gpg-keys 4AA394086372C20A 12CE0F1D262429A5 && chmod -R +x ./tools/
 
     - name: 'Tar project'
       run: tar -cf project.tar .
@@ -61,3 +61,18 @@ jobs:
 
     - name: Run PHPUnit test
       run: ./tools/phpunit -c ./build/phpunit.xml
+
+  static-analysis:
+    needs: install
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: installed-project
+
+    - name: Untar project.
+      run:  tar -xf project.tar
+
+    - name: Run Psalm
+      run: cd build/ && ./tools/psalm -c ./build/psalm.xml
