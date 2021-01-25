@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <psalm
     autoloader="../vendor/autoload.php"
-    cacheDirectory="./cache/"
-    totallyTyped="true"
+    errorLevel="1"
     resolveFromConfigFile="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
@@ -14,8 +13,4 @@
             <directory name="../vendor/" />
         </ignoreFiles>
     </projectFiles>
-
-    <issueHandlers>
-        <LessSpecificReturnType errorLevel="info" />
-    </issueHandlers>
 </psalm>
