@@ -75,4 +75,4 @@ jobs:
       run:  tar -xf project.tar
 
     - name: Run Psalm
-      run: cd build/ && ./tools/psalm -c ./build/psalm.xml
+      run: cd build/ && ./psalm -c ../build/psalm.xml
