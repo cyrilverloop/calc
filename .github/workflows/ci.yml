@@ -59,7 +59,7 @@ jobs:
       run:  tar -xf project.tar
 
     - name: Run php lint
-      run: find ./src/ ./tests/ -type f -name '*.php' -exec php -l {} \; >/dev/null
+      run: find ./src/ ./tests/ -type f -name '*.php' -print0 | xargs -0 -n1 -P4 php -l -n | (! grep -v "No syntax errors detected" )
 
   test:
     needs: phplint
