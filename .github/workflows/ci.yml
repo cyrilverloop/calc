@@ -8,7 +8,6 @@ on:
 
 jobs:
   install:
-
     runs-on: ubuntu-20.04
 
     steps:
@@ -47,8 +46,23 @@ jobs:
         name: installed-project
         path: project.tar
 
-  test:
+  phplint:
     needs: install
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: installed-project
+
+    - name: Untar project.
+      run:  tar -xf project.tar
+
+    - name: Run php lint
+      run: find ./src/ ./tests/ -type f -name '*.php' -exec php -l {} \; >/dev/null
+
+  test:
+    needs: phplint
     runs-on: ubuntu-20.04
 
     steps:
@@ -63,7 +77,7 @@ jobs:
       run: ./tools/phpunit -c ./build/phpunit.xml
 
   static-analysis:
-    needs: install
+    needs: phplint
     runs-on: ubuntu-20.04
 
     steps:
