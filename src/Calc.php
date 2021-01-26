@@ -16,7 +16,7 @@ class Calc
      * Adds two integers.
      * @return int the addition of two integers.
      */
-    public function add(int $a,int $b): int
+    public function add(int $a, int $b): int
     {
         return $a + $b;
     }
