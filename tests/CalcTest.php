@@ -23,7 +23,7 @@ class CalcTest extends TestCase
     protected Calc $calc;
 
 
-    // Methodes :
+    // Methods :
 
     /**
      * Initialises tests.
