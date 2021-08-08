@@ -38,6 +38,17 @@ jobs:
       if: steps.phive-tools-cache.outputs.cache-hit != 'true'
       run: wget -O phive https://phar.io/releases/phive.phar && chmod +x phive && ./phive install --trust-gpg-keys 4AA394086372C20A,12CE0F1D262429A5,31C7E470E2138192 && chmod -R +x ./tools/
 
+    - name: Cache npm packages
+      id: npm-cache
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: package-lock-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Install npm dependencies
+      if: steps.npm-cache.outputs.cache-hit != 'true'
+      run: npm i
+
     - name: 'Tar project'
       run: tar -cf project.tar .
 
@@ -90,6 +101,9 @@ jobs:
 
     - name: Run PHPUnit test
       run: ./tools/phpunit -c ./build/phpunit.xml
+
+    - name: Run Mocha test
+      run: npm run test-ci
 
   static-analysis:
     needs: phplint

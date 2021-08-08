@@ -1,0 +1,24 @@
+{
+    "name": "calc",
+    "description": "A calculator.",
+    "type": "module",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "jsdoc": "jsdoc -c ./build/jsdoc-conf.json",
+        "test-dev": "mocha --config ./build/mocha-dev.json",
+        "test-ci": "mocha --config ./build/mocha-ci.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cyrilverloop/calc.git"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/cyrilverloop/calc#readme",
+    "devDependencies": {
+        "chai": "^4.3.4",
+        "jsdoc": "^3.6.7",
+        "mocha": "^9.0.3"
+    }
+}

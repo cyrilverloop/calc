@@ -1,4 +1,6 @@
 /build/cache/
+/build/mocha/
 /build/phpunit/
+/node_modules/
 /tools/
 /vendor/
