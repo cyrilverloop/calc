@@ -1,5 +1,5 @@
 {
-    "recursive": ["./tests/js/**/*.js"],
+    "spec": ["./tests/js/**/*.js"],
     "ui": "tdd",
     "R": "xunit",
     "reporterOptions": "output=./build/mocha/mocha-xunit.xml"

@@ -1,5 +1,4 @@
 {
-    "recursive": ["./tests/js/**/*.js"],
-    "ui": "tdd",
-    "R": "spec"
+    "spec": ["./tests/js/**/*.js"],
+    "ui": "tdd"
 }
