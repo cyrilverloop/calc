@@ -1,4 +1,5 @@
 /build/cache/
+/build/jsdoc/
 /build/mocha/
 /build/phpunit/
 /node_modules/
