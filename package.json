@@ -7,6 +7,8 @@
     },
     "scripts": {
         "jsdoc": "jsdoc -c ./build/jsdoc-conf.json",
+        "coverage-dev": "c8 -c ./build/c8-dev.json npm run test-dev",
+        "coverage-ci": "c8 -c ./build/c8-ci.json npm run test-ci",
         "test-dev": "mocha --config ./build/mocha-dev.json",
         "test-ci": "mocha --config ./build/mocha-ci.json"
     },
@@ -17,6 +19,7 @@
     "license": "MIT",
     "homepage": "https://github.com/cyrilverloop/calc#readme",
     "devDependencies": {
+        "c8": "^7.8.0",
         "chai": "^4.3.4",
         "jsdoc": "^3.6.7",
         "mocha": "^9.1.1"
