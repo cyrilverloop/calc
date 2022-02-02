@@ -6,7 +6,6 @@ namespace CyrilVerloop\Calc;
 
 /**
  * A calculator.
- * @package \CyrilVerloop\Calc
  */
 class Calc
 {

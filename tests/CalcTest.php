@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Test the calculator.
- * @package \CyrilVerloop\Calc\Tests
  *
  * @coversDefaultClass \CyrilVerloop\Calc\Calc
  */
@@ -27,7 +26,6 @@ class CalcTest extends TestCase
 
     /**
      * Initialises tests.
-     * @return void
      */
     public function setUp(): void
     {
@@ -37,7 +35,6 @@ class CalcTest extends TestCase
 
     /**
      * Test that two numbers can be added.
-     * @return void
      *
      * @covers ::add
      */
