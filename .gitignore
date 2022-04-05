@@ -1,8 +1,8 @@
-/build/c8/
-/build/cache/
-/build/jsdoc/
-/build/mocha/
-/build/phpunit/
+/ci/c8/
+/ci/cache/
+/ci/jsdoc/
+/ci/mocha/
+/ci/phpunit/
 /node_modules/
 /tools/
 /vendor/

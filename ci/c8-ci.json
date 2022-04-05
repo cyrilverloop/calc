@@ -3,8 +3,9 @@
         "assets/**/*.js"
     ],
     "reporter": [
+        "clover",
         "html",
         "text"
     ],
-    "report-dir": "build/c8/"
+    "report-dir": "ci/c8/"
 }

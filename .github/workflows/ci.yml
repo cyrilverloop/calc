@@ -100,7 +100,7 @@ jobs:
       run:  tar -xf project.tar
 
     - name: Run PHPUnit test
-      run: ./tools/phpunit -c ./build/phpunit.xml
+      run: ./tools/phpunit -c ./ci/phpunit.xml
 
     - name: Run Mocha test
       run: npm run test-ci

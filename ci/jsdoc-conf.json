@@ -1,6 +1,6 @@
 {
     "opts": {
-        "destination": "./build/jsdoc/",
+        "destination": "./ci/jsdoc/",
         "recurse": true
     },
     "source": {

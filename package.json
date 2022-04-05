@@ -6,11 +6,11 @@
         "test": "tests"
     },
     "scripts": {
-        "jsdoc": "jsdoc -c ./build/jsdoc-conf.json",
-        "coverage-dev": "c8 -c ./build/c8-dev.json npm run test-dev",
-        "coverage-ci": "c8 -c ./build/c8-ci.json npm run test-ci",
-        "test-dev": "mocha --config ./build/mocha-dev.json",
-        "test-ci": "mocha --config ./build/mocha-ci.json"
+        "jsdoc": "jsdoc -c ./ci/jsdoc-conf.json",
+        "coverage-dev": "c8 -c ./ci/c8-dev.json npm run test-dev",
+        "coverage-ci": "c8 -c ./ci/c8-ci.json npm run test-ci",
+        "test-dev": "mocha --config ./ci/mocha-dev.json",
+        "test-ci": "mocha --config ./ci/mocha-ci.json"
     },
     "repository": {
         "type": "git",
