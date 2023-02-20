@@ -6,12 +6,14 @@ namespace CyrilVerloop\Calc\Tests;
 
 use CyrilVerloop\Calc\Calc;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes as PA;
 
 /**
  * Test the calculator.
- *
- * @coversDefaultClass \CyrilVerloop\Calc\Calc
  */
+#[
+    PA\CoversClass(Calc::class)
+]
 class CalcTest extends TestCase
 {
     // Properties :
@@ -35,8 +37,6 @@ class CalcTest extends TestCase
 
     /**
      * Test that two numbers can be added.
-     *
-     * @covers ::add
      */
     public function testCanAdd(): void
     {
