@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace CyrilVerloop\Calc\Tests;
 
 use CyrilVerloop\Calc\Calc;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes as PA;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test the calculator.
