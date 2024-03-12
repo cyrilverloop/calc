@@ -32,7 +32,7 @@ jobs:
 
     - name: Install phive tools
       if: steps.phive-tools-cache.outputs.cache-hit != 'true'
-      run: wget -O phive https://phar.io/releases/phive.phar && chmod +x phive && ./phive install --trust-gpg-keys 4AA394086372C20A,12CE0F1D262429A5,5E6DDE998AB73B8E && chmod -R +x ./tools/
+      run: wget -O phive https://phar.io/releases/phive.phar && chmod +x phive && ./phive install --trust-gpg-keys 4AA394086372C20A,12CE0F1D262429A5,5E6DDE998AB73B8E,C5095986493B4AA0 && chmod -R +x ./tools/
 
     - name: Cache npm packages
       id: npm-cache

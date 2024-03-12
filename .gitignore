@@ -3,6 +3,7 @@
 /ci/jsdoc/
 /ci/mocha/
 /ci/phpunit/
+/ci/infection/
 /node_modules/
 /tools/
 /vendor/
