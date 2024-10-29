@@ -1,9 +1,10 @@
 /ci/c8/
 /ci/cache/
+/ci/infection/
 /ci/jsdoc/
 /ci/mocha/
 /ci/phpunit/
-/ci/infection/
+/ci/psalm/
 /node_modules/
 /tools/
 /vendor/
