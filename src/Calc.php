@@ -6,6 +6,7 @@ namespace CyrilVerloop\Calc;
 
 /**
  * A calculator.
+ * @psalm-api
  */
 class Calc
 {
