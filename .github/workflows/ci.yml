@@ -120,4 +120,4 @@ jobs:
       run:  tar -xf project.tar
 
     - name: Run Psalm
-      run: ./tools/psalm -c ./ci/psalm.xml --shepherd --no-cache
+      run: ./tools/psalm -c ./ci/psalm.xml --no-cache
