@@ -19,7 +19,7 @@
     "license": "MIT",
     "homepage": "https://github.com/cyrilverloop/calc#readme",
     "devDependencies": {
-        "c8": "^10.1.2",
+        "c8": "^11.0.0",
         "chai": "^6.0.0",
         "jsdoc": "^4.0.2",
         "mocha": "^11.0.1"
